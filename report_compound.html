@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수익률 비교 분석 보고서</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+            }
+
+            canvas {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen p-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden print:shadow-none print:max-w-none">
+        <!-- Header -->
+        <header class="bg-gradient-to-r from-orange-500 to-red-500 text-white p-8">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h1 class="text-3xl font-black mb-2">수익률 비교 분석 보고서</h1>
+                    <p class="text-orange-100">Yield Comparison Report</p>
+                </div>
+                <div class="text-right">
+                    <p class="font-bold text-lg" id="r-clientName">홍길동님</p>
+                    <p class="text-sm text-orange-200 mt-1" id="r-date">2024.01.01</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <div class="p-8 space-y-8">
+            <!-- Setup -->
+            <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <span class="w-2 h-6 bg-orange-500 rounded-full"></span>
+                    가정 설정
+                </h2>
+                <div class="grid grid-cols-3 gap-4 text-center text-sm">
+                    <div class="bg-white p-3 rounded-lg border border-gray-200">
+                        <span class="text-gray-500 block mb-1">초기 투자금</span>
+                        <span class="font-bold text-gray-800 text-lg" id="r-principal">0원</span>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg border border-gray-200">
+                        <span class="text-gray-500 block mb-1">투자 기간</span>
+                        <span class="font-bold text-gray-800 text-lg" id="r-duration">0년</span>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg border border-gray-200">
+                        <span class="text-gray-500 block mb-1">시작 나이</span>
+                        <span class="font-bold text-gray-800 text-lg" id="r-age">0세</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Result -->
+            <div class="grid grid-cols-2 gap-6">
+                <!-- Case A -->
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-200 relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 bg-gray-200 text-gray-600 px-3 py-1 text-xs font-bold rounded-bl-lg">
+                        Case A</div>
+                    <p class="text-sm text-gray-500 mb-1">수익률 <span id="r-rateA"
+                            class="font-bold text-gray-700">0%</span> 적용 시</p>
+                    <p class="text-2xl font-black text-gray-800 mb-2" id="r-totalA">0원</p>
+                    <div class="text-xs text-gray-500">
+                        누적 수익률: <span class="font-bold text-gray-700" id="r-accRateA">0%</span>
+                    </div>
+                </div>
+
+                <!-- Case B -->
+                <div
+                    class="bg-orange-50 rounded-xl p-6 border border-orange-200 relative overflow-hidden ring-2 ring-orange-200">
+                    <div
+                        class="absolute top-0 right-0 bg-orange-500 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">
+                        Case B</div>
+                    <p class="text-sm text-orange-600 mb-1">수익률 <span id="r-rateB"
+                            class="font-bold text-orange-700">0%</span> 적용 시</p>
+                    <p class="text-2xl font-black text-orange-800 mb-2" id="r-totalB">0원</p>
+                    <div class="text-xs text-orange-600">
+                        누적 수익률: <span class="font-bold text-orange-700" id="r-accRateB">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Difference Highlight -->
+            <div
+                class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-8 text-white text-center shadow-lg transform scale-105">
+                <p class="text-gray-400 mb-2 text-sm uppercase tracking-wider">Total Difference</p>
+                <h3 class="text-4xl font-black mb-1" id="r-diff">0원</h3>
+                <p class="text-gray-400 text-sm">더 많은 수익을 기대할 수 있습니다.</p>
+            </div>
+
+            <!-- Chart -->
+            <div>
+                <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <span class="w-2 h-6 bg-red-500 rounded-full"></span>
+                    자산 성장 그래프 비교
+                </h2>
+                <div class="h-64 w-full bg-white border border-gray-100 rounded-xl p-4">
+                    <canvas id="reportChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-gray-50 p-8 text-center text-xs text-gray-500 border-t border-gray-100">
+            <p class="mb-2">본 보고서는 복리 수익률을 가정하여 계산된 시뮬레이션 결과입니다.</p>
+            <p>Financial Master Helper © 2024</p>
+        </div>
+    </div>
+
+    <!-- Print Button -->
+    <button onclick="window.print()"
+        class="no-print fixed bottom-8 right-8 bg-gray-900 text-white p-4 rounded-full shadow-xl hover:bg-black transition-all transform hover:scale-105">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+        </svg>
+    </button>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+
+            const clientName = params.get('clientName') || '고객';
+            document.getElementById('r-clientName').textContent = clientName + ' 님';
+            document.getElementById('r-date').textContent = new Date().toLocaleDateString();
+
+            const principal = parseInt(params.get('principal')) || 0;
+            const duration = parseInt(params.get('duration')) || 0;
+            const age = parseInt(params.get('age')) || 0;
+
+            const rateA = parseFloat(params.get('rateA')) || 0;
+            const rateB = parseFloat(params.get('rateB')) || 0;
+
+            const totalA = parseInt(params.get('totalA')) || 0;
+            const totalB = parseInt(params.get('totalB')) || 0;
+
+            const accRateA = parseFloat(params.get('accRateA')) || 0;
+            const accRateB = parseFloat(params.get('accRateB')) || 0;
+
+            const diff = parseInt(params.get('diff')) || 0;
+
+            // Render Values
+            document.getElementById('r-principal').textContent = principal.toLocaleString() + '원';
+            document.getElementById('r-duration').textContent = duration + '년';
+            document.getElementById('r-age').textContent = age + '세';
+
+            document.getElementById('r-rateA').textContent = rateA + '%';
+            document.getElementById('r-totalA').textContent = totalA.toLocaleString() + '원';
+            document.getElementById('r-accRateA').textContent = accRateA.toFixed(1) + '%';
+
+            document.getElementById('r-rateB').textContent = rateB + '%';
+            document.getElementById('r-totalB').textContent = totalB.toLocaleString() + '원';
+            document.getElementById('r-accRateB').textContent = accRateB.toFixed(1) + '%';
+
+            document.getElementById('r-diff').textContent = '+' + diff.toLocaleString() + '원';
+
+            // Render Chart (Simple Re-calc for visualization)
+            const labels = [];
+            const dataA = [];
+            const dataB = [];
+
+            let currentA = principal;
+            let currentB = principal;
+
+            for (let i = 0; i <= duration; i++) {
+                labels.push((age + i) + '세');
+                dataA.push(Math.round(currentA));
+                dataB.push(Math.round(currentB));
+
+                currentA = currentA * (1 + rateA / 100);
+                currentB = currentB * (1 + rateB / 100);
+            }
+
+            const ctx = document.getElementById('reportChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: `Case A (${rateA}%)`,
+                            data: dataA,
+                            borderColor: '#9ca3af', // Gray
+                            backgroundColor: '#9ca3af',
+                            tension: 0.4
+                        },
+                        {
+                            label: `Case B (${rateB}%)`,
+                            data: dataB,
+                            borderColor: '#f97316', // Orange
+                            backgroundColor: '#f97316',
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    scales: {
+                        y: {
+                            ticks: { callback: v => (v / 10000).toLocaleString() + '만원' }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
