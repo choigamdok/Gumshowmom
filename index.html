@@ -245,46 +245,53 @@
     <nav class="bg-white border-b border-gray-200 sticky top-[88px] sm:top-[96px] z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex overflow-x-auto gap-2 py-3 scrollbar-hide">
-                <!-- 1. 황금 거위 만들기 (Active) -->
-                <button onclick="switchTab('retirement', event)"
-                    class="tab-btn active whitespace-nowrap px-4 py-2.5 rounded-full font-bold text-sm transition-all flex flex-col items-center leading-tight">
-                    <span>🎯 1. 황금 거위 (은퇴 준비)</span>
-                    <span class="text-[10px] font-normal opacity-75 mt-0.5">Golden Goose</span>
-                </button>
-
-                <!-- 2. 은퇴 인출 설계 -->
-                <button onclick="switchTab('withdrawal', event)"
-                    class="tab-btn whitespace-nowrap px-4 py-2.5 rounded-full font-bold text-sm transition-all flex flex-col items-center leading-tight">
-                    <span>💳 2. 은퇴 인출 (은퇴 생활)</span>
-                    <span class="text-[10px] font-normal opacity-75 mt-0.5">Withdrawal Plan</span>
-                </button>
-
-                <!-- 3. 라이프 사이클 -->
+                <!-- 1. 라이프 사이클 (Active) -->
                 <button onclick="switchTab('lifecycle', event)"
-                    class="tab-btn whitespace-nowrap px-4 py-2.5 rounded-full font-bold text-sm transition-all flex flex-col items-center leading-tight">
-                    <span>📅 3. 라이프 사이클</span>
+                    class="tab-btn active whitespace-nowrap px-4 py-2.5 rounded-full font-bold text-sm transition-all flex flex-col items-center leading-tight">
+                    <span>📅 1. 라이프 사이클</span>
                     <span class="text-[10px] font-normal opacity-75 mt-0.5">Life Cycle</span>
                 </button>
 
-                <!-- 4. 복리의 마법 -->
+                <!-- 2. 복리의 마법 -->
                 <button onclick="switchTab('monthly-compound', event)"
                     class="tab-btn whitespace-nowrap px-4 py-2.5 rounded-full font-bold text-sm transition-all flex flex-col items-center leading-tight">
-                    <span>📈 4. 복리의 마법</span>
+                    <span>📈 2. 복리의 마법</span>
                     <span class="text-[10px] font-normal opacity-75 mt-0.5">Compound Magic</span>
                 </button>
 
-                <!-- 5. 수익율 비교 -->
+                <!-- 3. 수익율 비교 -->
                 <button onclick="switchTab('compound', event)"
                     class="tab-btn whitespace-nowrap px-4 py-2.5 rounded-full font-bold text-sm transition-all flex flex-col items-center leading-tight">
-                    <span>💰 5. 수익율 비교</span>
+                    <span>💰 3. 수익율 비교</span>
                     <span class="text-[10px] font-normal opacity-75 mt-0.5">Return Compare</span>
                 </button>
 
-                <!-- 6. 게으름 비용 -->
+                <!-- 4. 복리 계산기 -->
+                <button onclick="switchTab('wealth-calc', event)"
+                    class="tab-btn whitespace-nowrap px-4 py-2.5 rounded-full font-bold text-sm transition-all flex flex-col items-center leading-tight">
+                    <span>🧮 4. 복리 계산기</span>
+                    <span class="text-[10px] font-normal opacity-75 mt-0.5">Wealth Calculator</span>
+                </button>
+
+                <!-- 5. 게으름 비용 -->
                 <button onclick="switchTab('delay', event)"
                     class="tab-btn whitespace-nowrap px-4 py-2.5 rounded-full font-bold text-sm transition-all flex flex-col items-center leading-tight">
-                    <span>⏰ 6. 게으름 비용</span>
+                    <span>⏰ 5. 게으름 비용</span>
                     <span class="text-[10px] font-normal opacity-75 mt-0.5">Cost of Delay</span>
+                </button>
+
+                <!-- 6. 은퇴 인출 설계 -->
+                <button onclick="switchTab('withdrawal', event)"
+                    class="tab-btn whitespace-nowrap px-4 py-2.5 rounded-full font-bold text-sm transition-all flex flex-col items-center leading-tight">
+                    <span>💳 6. 은퇴 인출 (은퇴 생활)</span>
+                    <span class="text-[10px] font-normal opacity-75 mt-0.5">Withdrawal Plan</span>
+                </button>
+
+                <!-- 7. 황금 거위 만들기 -->
+                <button onclick="switchTab('retirement', event)"
+                    class="tab-btn whitespace-nowrap px-4 py-2.5 rounded-full font-bold text-sm transition-all flex flex-col items-center leading-tight">
+                    <span>🎯 7. 황금 거위 (은퇴 준비)</span>
+                    <span class="text-[10px] font-normal opacity-75 mt-0.5">Golden Goose</span>
                 </button>
             </div>
         </div>
@@ -728,7 +735,7 @@
 
         <!-- Tab 3: 은퇴 설계 -->
         <!-- Tab 3: 은퇴 설계 (황금 거위) -->
-        <div id="tab-retirement" class="tab-content active">
+        <div id="tab-retirement" class="tab-content">
             <div class="mb-6 flex justify-between items-end">
                 <div>
                     <h2 class="text-2xl font-black text-gray-900 mb-2">🎯 황금 거위 만들기</h2>
@@ -882,7 +889,7 @@
         </div>
 
         <!-- Tab 4: 생애주기 -->
-        <div id="tab-lifecycle" class="tab-content">
+        <div id="tab-lifecycle" class="tab-content active">
             <div class="mb-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-100">
                 <div class="flex items-center justify-between mb-3">
                     <div class="flex items-center gap-3">
@@ -1136,6 +1143,274 @@
                                 <!-- JS Generated -->
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 7: 복리 계산기 (Wealth Calculator) -->
+        <div id="tab-wealth-calc" class="tab-content">
+            <div class="mb-8 bg-gradient-to-r from-indigo-50 to-violet-50 rounded-2xl p-6 border border-indigo-100">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg">
+                            🧮
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-black text-gray-900">🧮 복리 계산기</h2>
+                            <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider mt-0.5">Wealth
+                                Multiplier Calculator</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed">
+                    <span class="font-bold text-indigo-700">미래 가치, 수익률, 필요 원금, 투자 기간</span>을 한번에 계산하세요.
+                    복리의 힘으로 <span class="font-bold text-violet-700">당신의 자산이 불어나는 마법</span>을 확인해보세요!
+                </p>
+            </div>
+
+            <!-- 서브탭 네비게이션 -->
+            <div class="flex gap-2 mb-6 flex-wrap">
+                <button onclick="wcSwitchTab('wc-fv', event)"
+                    class="wc-tab-btn active px-5 py-2.5 rounded-full font-bold text-sm transition-all bg-indigo-600 text-white shadow-lg">
+                    💰 미래 가치 (FV)
+                </button>
+                <button onclick="wcSwitchTab('wc-yield', event)"
+                    class="wc-tab-btn px-5 py-2.5 rounded-full font-bold text-sm transition-all bg-gray-100 text-gray-600">
+                    📈 수익률 (Yield)
+                </button>
+                <button onclick="wcSwitchTab('wc-pv', event)"
+                    class="wc-tab-btn px-5 py-2.5 rounded-full font-bold text-sm transition-all bg-gray-100 text-gray-600">
+                    🎯 현재 가치 (PV)
+                </button>
+                <button onclick="wcSwitchTab('wc-duration', event)"
+                    class="wc-tab-btn px-5 py-2.5 rounded-full font-bold text-sm transition-all bg-gray-100 text-gray-600">
+                    ⏱️ 투자 기간
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- 입력 영역 -->
+                <div>
+                    <!-- FV: 미래 가치 -->
+                    <div id="wc-fv" class="wc-sub-tab toss-card space-y-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div
+                                class="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 font-bold">
+                                💰</div>
+                            <h3 class="text-lg font-bold text-gray-900">미래 가치 계산 (FV)</h3>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-4">지금 투자하면 미래에 얼마가 될까?</p>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">초기 투자금 (거치식)</label>
+                            <div class="relative">
+                                <input type="number" id="wc-fv-principal" value="10000000"
+                                    class="toss-input text-right pr-10 font-bold">
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">원</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">월 적립금 (적립식)</label>
+                            <div class="relative">
+                                <input type="number" id="wc-fv-monthly" value="1000000"
+                                    class="toss-input text-right pr-10 font-bold">
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">원</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">연 이자율 (복리)</label>
+                                <div class="relative">
+                                    <input type="number" id="wc-fv-rate" value="5" step="0.1"
+                                        class="toss-input text-right pr-10 font-bold">
+                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">%</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">투자 기간</label>
+                                <div class="relative">
+                                    <input type="number" id="wc-fv-years" value="10"
+                                        class="toss-input text-right pr-10 font-bold">
+                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">년</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FV 결과 -->
+                        <div class="mt-4 bg-gradient-to-r from-indigo-500 to-violet-600 p-5 rounded-xl text-center">
+                            <p class="text-xs text-white/80 font-semibold mb-1">예상 만기 금액</p>
+                            <p class="text-3xl font-black text-white toss-number" id="wc-fv-result">0원</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 mt-3">
+                            <div class="bg-gray-50 p-3 rounded-lg border text-center">
+                                <p class="text-xs text-gray-500 mb-1">총 투자 원금</p>
+                                <p class="font-bold text-gray-700 text-sm" id="wc-fv-total-principal">0원</p>
+                            </div>
+                            <div class="bg-indigo-50 p-3 rounded-lg border border-indigo-100 text-center">
+                                <p class="text-xs text-indigo-600 mb-1">이자 수익</p>
+                                <p class="font-bold text-indigo-700 text-sm" id="wc-fv-interest">0원</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Yield: 수익률 -->
+                    <div id="wc-yield" class="wc-sub-tab toss-card space-y-4" style="display:none;">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div
+                                class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-600 font-bold">
+                                📈</div>
+                            <h3 class="text-lg font-bold text-gray-900">수익률 계산 (CAGR)</h3>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-4">투자 결과로 연평균 수익률을 역산합니다</p>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">총 투자 원금</label>
+                            <div class="relative">
+                                <input type="number" id="wc-yield-principal" value="50000000"
+                                    class="toss-input text-right pr-10 font-bold">
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">원</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">최종 만기 금액</label>
+                            <div class="relative">
+                                <input type="number" id="wc-yield-final" value="100000000"
+                                    class="toss-input text-right pr-10 font-bold">
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">원</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">투자 기간</label>
+                            <div class="relative">
+                                <input type="number" id="wc-yield-years" value="10"
+                                    class="toss-input text-right pr-10 font-bold">
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">년</span>
+                            </div>
+                        </div>
+
+                        <!-- Yield 결과 -->
+                        <div class="mt-4 bg-gradient-to-r from-green-500 to-emerald-600 p-5 rounded-xl text-center">
+                            <p class="text-xs text-white/80 font-semibold mb-1">연평균 수익률 (CAGR)</p>
+                            <p class="text-3xl font-black text-white toss-number" id="wc-yield-result">0.00%</p>
+                        </div>
+                    </div>
+
+                    <!-- PV: 현재 가치 -->
+                    <div id="wc-pv" class="wc-sub-tab toss-card space-y-4" style="display:none;">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div
+                                class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">
+                                🎯</div>
+                            <h3 class="text-lg font-bold text-gray-900">현재 가치 계산 (PV)</h3>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-4">목표 금액을 달성하려면 지금 얼마가 필요할까?</p>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">목표 금액</label>
+                            <div class="relative">
+                                <input type="number" id="wc-pv-goal" value="100000000"
+                                    class="toss-input text-right pr-10 font-bold">
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">원</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">연 이자율</label>
+                                <div class="relative">
+                                    <input type="number" id="wc-pv-rate" value="4" step="0.1"
+                                        class="toss-input text-right pr-10 font-bold">
+                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">%</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">투자 기간</label>
+                                <div class="relative">
+                                    <input type="number" id="wc-pv-years" value="10"
+                                        class="toss-input text-right pr-10 font-bold">
+                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">년</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PV 모드 전환 -->
+                        <div class="flex gap-2 justify-center mt-2">
+                            <button onclick="wcSetPvMode('lump')" id="wc-pv-btn-lump"
+                                class="px-4 py-2 rounded-full text-sm font-bold transition-all bg-indigo-600 text-white shadow">
+                                거치식으로 보기
+                            </button>
+                            <button onclick="wcSetPvMode('monthly')" id="wc-pv-btn-monthly"
+                                class="px-4 py-2 rounded-full text-sm font-bold transition-all bg-gray-100 text-gray-600">
+                                적립식으로 보기
+                            </button>
+                        </div>
+
+                        <!-- PV 결과 -->
+                        <div class="mt-4 bg-gradient-to-r from-blue-500 to-indigo-600 p-5 rounded-xl text-center">
+                            <p class="text-xs text-white/80 font-semibold mb-1" id="wc-pv-result-label">필요한 초기 투자금</p>
+                            <p class="text-3xl font-black text-white toss-number" id="wc-pv-result">0원</p>
+                        </div>
+                    </div>
+
+                    <!-- Duration: 투자 기간 -->
+                    <div id="wc-duration" class="wc-sub-tab toss-card space-y-4" style="display:none;">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div
+                                class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 font-bold">
+                                ⏱️</div>
+                            <h3 class="text-lg font-bold text-gray-900">투자 기간 계산</h3>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-4">목표 금액까지 얼마나 걸릴까?</p>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">현재 보유 자산</label>
+                            <div class="relative">
+                                <input type="number" id="wc-dur-principal" value="50000000"
+                                    class="toss-input text-right pr-10 font-bold">
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">원</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">목표 금액</label>
+                            <div class="relative">
+                                <input type="number" id="wc-dur-goal" value="200000000"
+                                    class="toss-input text-right pr-10 font-bold">
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">원</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">연 이자율</label>
+                            <div class="relative">
+                                <input type="number" id="wc-dur-rate" value="5" step="0.1"
+                                    class="toss-input text-right pr-10 font-bold">
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">%</span>
+                            </div>
+                        </div>
+
+                        <!-- Duration 결과 -->
+                        <div class="mt-4 bg-gradient-to-r from-amber-500 to-orange-600 p-5 rounded-xl text-center">
+                            <p class="text-xs text-white/80 font-semibold mb-1">목표 달성 소요 기간</p>
+                            <p class="text-3xl font-black text-white toss-number" id="wc-dur-result">0.0년</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 차트 영역 -->
+                <div class="toss-card bg-gray-50">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-1.5 h-6 bg-indigo-600 rounded-full"></div>
+                        <h3 class="text-lg font-bold text-gray-900">자산 성장 그래프</h3>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-4">시간 경과에 따른 원금과 이자의 변화</p>
+                    <div class="relative" style="height: 350px;">
+                        <canvas id="wcChart"></canvas>
+                    </div>
+                    <div class="flex gap-6 justify-center mt-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-indigo-500 shadow-sm"></span>
+                            <span class="text-xs font-bold text-gray-600">투자 원금</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-pink-500 shadow-sm"></span>
+                            <span class="text-xs font-bold text-gray-600">이자 수익</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2447,6 +2722,243 @@
         // Initialize Call
         window.addEventListener('DOMContentLoaded', () => {
             initLifeCycle();
+        });
+
+        // ===== 🧮 복리 계산기 (Wealth Calculator) =====
+        let wcChart = null;
+        let wcCurrentTab = 'wc-fv';
+        let wcPvMode = 'lump';
+
+        // 서브탭 전환
+        function wcSwitchTab(tabId, event) {
+            document.querySelectorAll('.wc-sub-tab').forEach(el => el.style.display = 'none');
+            document.getElementById(tabId).style.display = 'block';
+
+            document.querySelectorAll('.wc-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-lg');
+                btn.classList.add('bg-gray-100', 'text-gray-600');
+            });
+
+            const clickedBtn = event.currentTarget;
+            clickedBtn.classList.remove('bg-gray-100', 'text-gray-600');
+            clickedBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-lg');
+
+            wcCurrentTab = tabId;
+            wcCalculateAll();
+        }
+
+        // PV 모드 전환
+        function wcSetPvMode(mode) {
+            wcPvMode = mode;
+            const btnLump = document.getElementById('wc-pv-btn-lump');
+            const btnMonthly = document.getElementById('wc-pv-btn-monthly');
+            const label = document.getElementById('wc-pv-result-label');
+
+            if (mode === 'lump') {
+                btnLump.className = 'px-4 py-2 rounded-full text-sm font-bold transition-all bg-indigo-600 text-white shadow';
+                btnMonthly.className = 'px-4 py-2 rounded-full text-sm font-bold transition-all bg-gray-100 text-gray-600';
+                label.textContent = '필요한 초기 투자금';
+            } else {
+                btnMonthly.className = 'px-4 py-2 rounded-full text-sm font-bold transition-all bg-indigo-600 text-white shadow';
+                btnLump.className = 'px-4 py-2 rounded-full text-sm font-bold transition-all bg-gray-100 text-gray-600';
+                label.textContent = '필요한 월 적립금';
+            }
+            wcCalculatePV();
+        }
+
+        // 유틸
+        function wcGetVal(id) {
+            const el = document.getElementById(id);
+            return el && el.value ? parseFloat(el.value) : 0;
+        }
+
+        function wcFormatMoney(amount) {
+            return new Intl.NumberFormat('ko-KR').format(Math.round(amount)) + '원';
+        }
+
+        // 전체 계산 분기
+        function wcCalculateAll() {
+            switch (wcCurrentTab) {
+                case 'wc-fv': wcCalculateFV(); break;
+                case 'wc-yield': wcCalculateYield(); break;
+                case 'wc-pv': wcCalculatePV(); break;
+                case 'wc-duration': wcCalculateDuration(); break;
+            }
+        }
+
+        // 1. FV 계산
+        function wcCalculateFV() {
+            const principal = wcGetVal('wc-fv-principal');
+            const monthly = wcGetVal('wc-fv-monthly');
+            const rate = wcGetVal('wc-fv-rate') / 100;
+            const years = wcGetVal('wc-fv-years');
+            const r = rate / 12;
+            const n = 12 * years;
+
+            let fv_p = principal > 0 ? principal * Math.pow(1 + r, n) : 0;
+            let fv_m = 0;
+            if (monthly > 0 && r > 0) fv_m = monthly * (Math.pow(1 + r, n) - 1) / r;
+            else if (monthly > 0) fv_m = monthly * n;
+
+            const total = fv_p + fv_m;
+            const totalPrincipal = principal + (monthly * n);
+            const totalInterest = total - totalPrincipal;
+
+            document.getElementById('wc-fv-result').textContent = wcFormatMoney(total);
+            document.getElementById('wc-fv-total-principal').textContent = wcFormatMoney(totalPrincipal);
+            document.getElementById('wc-fv-interest').textContent = wcFormatMoney(totalInterest);
+            wcUpdateChart(years, principal, monthly, rate);
+        }
+
+        // 2. Yield 계산
+        function wcCalculateYield() {
+            const principal = wcGetVal('wc-yield-principal');
+            const finalVal = wcGetVal('wc-yield-final');
+            const years = wcGetVal('wc-yield-years');
+
+            if (principal > 0 && finalVal > 0 && years > 0) {
+                const cagr = (Math.pow(finalVal / principal, 1 / years) - 1) * 100;
+                document.getElementById('wc-yield-result').textContent = cagr.toFixed(2) + '%';
+                wcUpdateChart(years, principal, 0, cagr / 100);
+            } else {
+                document.getElementById('wc-yield-result').textContent = '0.00%';
+            }
+        }
+
+        // 3. PV 계산
+        function wcCalculatePV() {
+            const goal = wcGetVal('wc-pv-goal');
+            const rate = wcGetVal('wc-pv-rate') / 100;
+            const years = wcGetVal('wc-pv-years');
+            const r = rate / 12;
+            const n = 12 * years;
+            let result = 0;
+
+            if (goal > 0 && years > 0) {
+                if (wcPvMode === 'lump') {
+                    result = goal / Math.pow(1 + r, n);
+                } else {
+                    result = r > 0 ? goal * (r / (Math.pow(1 + r, n) - 1)) : goal / n;
+                }
+            }
+            document.getElementById('wc-pv-result').textContent = wcFormatMoney(result);
+            if (wcPvMode === 'lump') wcUpdateChart(years, result, 0, rate);
+            else wcUpdateChart(years, 0, result, rate);
+        }
+
+        // 4. Duration 계산
+        function wcCalculateDuration() {
+            const principal = wcGetVal('wc-dur-principal');
+            const goal = wcGetVal('wc-dur-goal');
+            const rate = wcGetVal('wc-dur-rate') / 100;
+            let years = 0;
+
+            if (principal > 0 && goal > principal && rate > 0) {
+                years = Math.log(goal / principal) / Math.log(1 + rate);
+            }
+            document.getElementById('wc-dur-result').textContent = years.toFixed(1) + '년';
+            wcUpdateChart(Math.ceil(years) || 10, principal, 0, rate);
+        }
+
+        // 차트 업데이트
+        function wcUpdateChart(years, principal, monthly, rate) {
+            const canvas = document.getElementById('wcChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            if (!wcChart) {
+                const gInt = ctx.createLinearGradient(0, 0, 0, 350);
+                gInt.addColorStop(0, 'rgba(236, 72, 153, 0.4)');
+                gInt.addColorStop(1, 'rgba(236, 72, 153, 0.0)');
+                const gPri = ctx.createLinearGradient(0, 0, 0, 350);
+                gPri.addColorStop(0, 'rgba(99, 102, 241, 0.4)');
+                gPri.addColorStop(1, 'rgba(99, 102, 241, 0.0)');
+
+                wcChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [], datasets: [
+                            { label: '투자 원금', data: [], borderColor: '#6366f1', backgroundColor: gPri, fill: 'origin', tension: 0.4, borderWidth: 2, pointRadius: 0, pointHoverRadius: 6 },
+                            { label: '이자 수익', data: [], borderColor: '#ec4899', backgroundColor: gInt, fill: '-1', tension: 0.4, borderWidth: 2, pointRadius: 0, pointHoverRadius: 6 }
+                        ]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        plugins: {
+                            legend: { labels: { color: '#6b7280', font: { family: 'Pretendard' } } },
+                            tooltip: {
+                                mode: 'index', intersect: false,
+                                backgroundColor: 'rgba(15, 23, 42, 0.9)', titleColor: '#f8fafc', bodyColor: '#cbd5e1',
+                                callbacks: {
+                                    label: function (ctx) {
+                                        let l = ctx.dataset.label || '';
+                                        if (l) l += ': ';
+                                        if (ctx.parsed.y !== null) l += new Intl.NumberFormat('ko-KR').format(ctx.parsed.y) + '원';
+                                        return l;
+                                    },
+                                    footer: function (items) {
+                                        let t = 0; items.forEach(i => t += i.parsed.y);
+                                        return '\n총 예상 자산: ' + new Intl.NumberFormat('ko-KR').format(t) + '원';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { color: '#9ca3af' } },
+                            y: {
+                                stacked: true, beginAtZero: true,
+                                grid: { color: 'rgba(0,0,0,0.05)' },
+                                ticks: {
+                                    color: '#9ca3af',
+                                    callback: function (v) {
+                                        if (v >= 100000000) return Math.round(v / 100000000) + '억';
+                                        if (v >= 10000) return Math.round(v / 10000) + '만';
+                                        return v;
+                                    }
+                                }
+                            }
+                        },
+                        interaction: { mode: 'nearest', axis: 'x', intersect: false }
+                    }
+                });
+            }
+
+            const labels = [], dataPrincipal = [], dataInterest = [];
+            const r = rate / 12;
+            for (let y = 0; y <= years; y++) {
+                labels.push(y + '년');
+                let n = y * 12;
+                let p_acc = principal + (monthly * n);
+                let fv_p = principal * Math.pow(1 + r, n);
+                let fv_m = r > 0 ? monthly * (Math.pow(1 + r, n) - 1) / r : monthly * n;
+                dataPrincipal.push(Math.round(p_acc));
+                dataInterest.push(Math.round((fv_p + fv_m) - p_acc));
+            }
+
+            wcChart.data.labels = labels;
+            wcChart.data.datasets[0].data = dataPrincipal;
+            wcChart.data.datasets[1].data = dataInterest;
+            wcChart.update();
+        }
+
+        // 복리 계산기 입력 이벤트 리스너
+        function wcInitInputListeners() {
+            const ids = [
+                'wc-fv-principal', 'wc-fv-monthly', 'wc-fv-rate', 'wc-fv-years',
+                'wc-yield-principal', 'wc-yield-final', 'wc-yield-years',
+                'wc-pv-goal', 'wc-pv-rate', 'wc-pv-years',
+                'wc-dur-principal', 'wc-dur-goal', 'wc-dur-rate'
+            ];
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener('input', wcCalculateAll);
+            });
+        }
+
+        // 복리 계산기 초기화
+        window.addEventListener('DOMContentLoaded', () => {
+            wcInitInputListeners();
+            wcCalculateFV(); // 초기 계산
         });
     </script>
 </body>
